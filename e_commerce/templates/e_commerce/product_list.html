@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product List</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+</head>
+<body>
+  <h1>Products</h1>
+  <ul>
+{% for product in products%}
+  <li>
+      <h2>{{product.name}} </h2>
+      <p> {{ Product.description}}</p>
+      <p> price: {{Product.price}}</p>
+      <img scr="{{product.img.url}}" alt="{{product.name}}">
+      <p> Available: {{product.available|yesno:"Yes,No"}} </p>
+</li> 
+{% endfor %}
+  </ul>
+  {%comment %} <a href ="{% url 'product_detail'%}" class="back-link">Back to Product Details</a> {% endcomment %}
+</body>
+</html>

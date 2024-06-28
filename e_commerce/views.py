@@ -1,11 +1,32 @@
-from django.http import HttpResponse
-from django.shortcuts import render
-# from django.http import HttpResponse
-
-# from django.shortcuts import HttpResponse2
+from django.shortcuts import render, get_object_or_404, render
+from .models import product, Customer 
 
 # Create your views here.
+def product_list(request):
+    products = product.objects.all()
+    context = {
+        'products':products
+    }
+    return render(request, 'e_commerce/product_list.html',context) 
+ 
+def product_detail(request, pk):
+    product = get_object_or_404(product, pk=pk)
+    context = {
+        'product':product
+    }
+    return render(request, 'e_commerce/product_detail.html', context)
 
-def index(request):
-# return HttpResponse("<h1>My first Webpage with python Django</h1>")
-   return HttpResponse("<h1>Using shortcuts.My first Webpage with python Django</h1>")
+def customer_list(request):
+    customers = Customer.objects.all()
+    context = {
+        'customers': customers
+    }
+    return render(request,'e_commerce/ustomer_list', context)
+
+def customer_detail(request, pk):
+    customer = get_object_or_404(customer, pk=pk)
+    context ={
+        'customer': customer
+    }
+    return render (request, 'e_commerce/customer_detail', context)
+                  

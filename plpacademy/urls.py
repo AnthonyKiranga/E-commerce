@@ -19,5 +19,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/',admin.site.urls),
-    path('',include('e_commerce.urls')),# after learnin namespacing, cannot be left blank 
+    path('e_commerce/',include('e_commerce.urls')),# after learnin namespacing, cannot be left blank 
 ]
